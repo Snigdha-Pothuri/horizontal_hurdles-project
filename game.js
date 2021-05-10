@@ -34,6 +34,7 @@ class Game {
     runner2 = createSprite(10,500);
     runner2.addAnimation("runner2",runner2_img);
     runners = [runner1, runner2];
+    obstaclesgroup=new Group()
   }
 
   play(){
@@ -45,7 +46,7 @@ class Game {
     if(allPlayers !== undefined){
       background(rgb(198,135,103));
       image(track, -1000,-20,displayWidth*5, displayHeight);
-      
+      spawnObstacles()
       //var display_position = 100;
       
       //index of the array
@@ -67,14 +68,19 @@ class Game {
       runners[index-1].y = y;
        // console.log(index, player.index)
 
-       
+       if(keyIsDown(UP_ARROW)){
+       runners[index-1].y=runners[index-1].y-200
+       }
         if (index === player.index){
           stroke(10);
           fill("red");
           ellipse(x,y,60,60);
           runners[index - 1].shapeColor = "red";
           camera.position.x = runners[index-1].x;
-          camera.position.y = runners[index-1].y;ytt 
+          camera.position.y = runners[index-1].y;ytt
+          if(runners[index-1].isTouching(obstaclesgroup)){
+          gameState=2
+          }
         }
        
         //textSize(15);
