@@ -8,7 +8,6 @@ var database;
 var form, player, game;
 var runners, runner1, runner2,hurdle
 var track
-var obstaclesgroup
 
 function preload(){
   track = loadImage("images/pla.jpg");
